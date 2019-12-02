@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб1 | Задача1</title>
+</head>
+<body onload="palindromeChecker()">
+<script>
+    function palindromeChecker() {
+        let number = prompt("Внесете број", "");
+        number = parseInt(number);
+        if (number >= 1000 || number <= 99) {
+            alert("Не е внесен троцифрен број!");
+        } else {
+            if (parseInt(number / 100) == parseInt(number % 10)) {
+                alert("Внесениот број е палиндром");
+            } else {
+                alert("Внесениот број не е палиндром");
+            }
+        }
+    }
+</script>
+</body>
+</html>

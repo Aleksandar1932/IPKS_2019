@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб3 | Задача3</title>
+</head>
+<body onload="infoFiller()">
+
+<h1>About Me</h1>
+<ul>
+    <li>Name: <span id="name"></span>
+    <li>Index: <span id="index"></span>
+    <li>Hometown: <span id="hometown"></span>
+</ul>
+
+<script>
+    function infoFiller() {
+        document.body.style.fontFamily = "Arial";
+        document.getElementById("name").innerText = "Александар Ивановски";
+        document.getElementById("index").innerText = "186063";
+        document.getElementById("hometown").innerText = "Струмица";
+
+        let liArr = document.getElementsByTagName("li");
+
+        for (let i = 0; i < liArr.length; i++)
+            liArr[i].style.backgroundColor = "red";
+
+    }
+</script>
+</body>
+</html>

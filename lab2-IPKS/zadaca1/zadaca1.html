@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=utf-8/>
+    <title>Лаб2 | Задача1</title>
+</head>
+<body>
+<form>
+    <label for="colorSelect"></label><select id="colorSelect">
+        <option>Red</option>
+        <option>Green</option>
+        <option>White</option>
+        <option>Black</option>
+    </select>
+    <input type="button" onclick="removeColor()" value="Select and Remove"><br></form>
+
+<script>
+    function removeColor() {
+        let list = document.getElementById("colorSelect");
+        let selectedItem = list.options[list.selectedIndex].value;
+        console.log("The selected item is: " + selectedItem);
+        list.options.remove(list.selectedIndex);
+        document.getElementById("colorSelect").options = list;
+        return false;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб1 | Задача2</title>
+</head>
+<body onload="phoneNumberChecker()">
+<script>
+    function phoneNumberChecker() {
+        let phoneNumber = prompt("Внесете број", "");
+        let part1 = parseInt(phoneNumber % 1000);
+        let part2 = parseInt((phoneNumber / 1000) % 1000);
+        let part3 = phoneNumber.substr(0, 3);
+
+        let provider = "";
+        if (part3 == "070" || part3 == "071" || part3 == "072") {
+            provider = "Telekom.mk";
+        } else if (part3 == "075" || part3 == "076") {
+            provider = "One";
+        } else if (part3 == "077" || part3 == "078") {
+            provider = "Vip";
+        } else {
+            provider = "Unknown";
+        }
+        alert(part3 + "/" + part2 + "-" + part1 + "\n" + provider);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб2 | Задача2</title>
+</head>
+<body onload="randomImageSelector()">
+<img src="" id="image" alt="Random prikazana slika od dadeni 3">
+<script>
+    function randomImageSelector() {
+        let linkArray = [
+            "http://data.whicdn.com/images/15145864/large.jpg",
+            "https://images.unsplash.com/photo-1493134799591-2c9eed26201a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+            "https://farm5.staticflickr.com/4060/4567292488_5d3f4b05f6_z.jpg"
+        ];
+        document.getElementById("image").src = linkArray[Math.floor(Math.random() * 3)];
+    }
+</script>
+</body>
+</html>

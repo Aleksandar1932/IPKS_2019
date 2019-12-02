@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб3 | Задача4</title>
+</head>
+<body>
+<form>
+    <p><input type="text" name="an" id="an" value="" class="n"> <input type="text" name="ai" id="ai" value="" class="i">i
+    </p>
+    <p><input type="text" name="bn" id="bn" value="" class="n"> <input type="text" name="bi" id="bi" value="" class="i">i
+    </p>
+
+    <input type="button" onclick="complexAdd()" value="ADD">
+
+    <p><input id="resN"> <input id="resI">i </p>
+
+</form>
+
+<script>
+    function complexAdd() {
+
+        let nArr = document.getElementsByClassName("n");
+        let iArr = document.getElementsByClassName("i");
+
+       // console.log(parseInt(nArr[0].value) + parseInt(nArr[1].value));
+
+        document.getElementById("resN").value = parseInt(nArr[0].value) + parseInt(nArr[1].value);
+        document.getElementById("resI").value = parseInt(iArr[0].value) + parseInt(iArr[1].value);
+    }
+</script>
+</body>
+</html>

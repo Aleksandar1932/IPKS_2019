@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб1 | Задача3</title>
+</head>
+<body onload="longestWord()">
+<script>
+    function longestWord() {
+        let string = prompt("Внесете стринг", "");
+        let words = string.split(' ');
+        let len = 0;
+        let retValue;
+        words.forEach(function (word) {
+            if (word.length > len) {
+                len = word.length;
+                retValue = word;
+            }
+        });
+        alert("Најдолгиот збот во рамките на стрингот е: " + retValue);
+    }
+</script>
+
+</body>
+</html>

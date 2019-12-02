@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб1 | Задача4</title>
+</head>
+<body onload="sign()">
+<script>
+    function sign() {
+        let a = prompt("Внесете го првиот број", "");
+        let b = prompt("Внесете го вториот број", "");
+        let c = prompt("Внесете го третиот број", "");
+
+        let product = parseInt(a) * parseInt(b) * parseInt(c);
+        product = parseInt(product);
+
+        if (product > 0) {
+            alert("Знакот е +");
+        } else {
+            alert("Знакот е -");
+        }
+    }
+</script>
+</body>
+</html>
