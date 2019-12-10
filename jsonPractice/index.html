@@ -2,11 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>fdsfdsfdsdfsdf
-<body>
-<p>
-    Aleksandar
-</p>
+    <title>JSON Test</title>
+</head>
+<body onload="jsonLoader()">
+<div class="mainContent" id="mainContent">
+
+</div>
+
+
+<script>
+    function jsonLoader() {
+        var employees = {
+            "employees" : [
+                {
+                    "firstname" : "Aleksandar",
+                    "lastname" : "Ivanovski",
+                    "age" : 19
+                },
+                {
+                    "firstname" : "Sanja",
+                    "lastname" : "Petrova",
+                    "age" : 19
+                }
+            ]
+        };
+
+        const employeesJSON = JSON.stringify(employees);
+
+        const obj = JSON.parse(employeesJSON);
+
+        document.getElementById("mainContent").innerHTML = obj[1].firstname;
+
+    }
+</script>
 </body>
 </html>

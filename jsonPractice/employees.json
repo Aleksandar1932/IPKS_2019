@@ -1,0 +1,14 @@
+{
+  "employees" : [
+    {
+    "firstname" : "Aleksandar",
+    "lastname" : "Ivanovski",
+    "age" : 19
+    },
+    {
+      "firstname" : "Sanja",
+      "lastname" : "Petrova",
+      "age" : 19
+    }
+  ]
+}
