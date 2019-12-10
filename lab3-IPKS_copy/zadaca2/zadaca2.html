@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab3 - Zadaca2</title>
+</head>
+<body onload="mainDriver()">
+<div class="driver-testcases" id="driver-testcases">
+
+</div>
+<script>
+    function mainDriver() {
+        let array1 = [2, 5, 9, 6];
+        let array2 = ["car" , "aleksandar", "finki", "Finki", "javaScript"];
+        console.log(removeArrayElement(array1, 5));
+        console.log(removeArrayElement(array2,"fissnki"));
+
+        //Malku front-end funkcionalnost, da ne bide se vo console;
+        let array3 = [2, 5, 9, 6];
+        let array4 = ["car" , "aleksandar", "finki", "Finki", "javaScript"];
+        let array5 = ["aaa" , "bbb", "ccc", "ddd", "eee"];
+
+
+        document.getElementById("driver-testcases").innerHTML +=
+            "<b>Тест случај: 1</b>" +
+            "<br>Почетна листа: " + array3 +
+            "<br>Eлемент за бришење: " + "5" +
+            "<br>Резултат: " + removeArrayElement(array3,5) + "<br><br>";
+
+        document.getElementById("driver-testcases").innerHTML +=
+            "<b>Тест случај: 2</b>" +
+            "<br>Почетна листа: " + array4 +
+            "<br>Eлемент за бришење: " + "finki" +
+            "<br>Резултат: " + removeArrayElement(array4,"finki") + "<br><br>";
+
+        document.getElementById("driver-testcases").innerHTML +=
+            "<b>Тест случај: 3</b>" +
+            "<br>Почетна листа: " + array5 +
+            "<br>Eлемент за бришење: " + "fff" +
+            "<br>Резултат: " + removeArrayElement(array5,"fff") + "<br><br>";
+    }
+
+    function removeArrayElement(array, elementToRemove) {
+        let found = false;
+
+        for (let i = 0; i < array.length; i++) {
+            if(array[i] === elementToRemove){
+                found = true;
+                array.splice(i,1);
+            }
+        }
+
+        if(found){
+            return array;
+        }
+        else{
+            return "Element not found";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab3 - Zadaca 1</title>
+</head>
+<body onload="mainDriver()">
+
+<div class="driver-testcases" id="driver-testcases">
+
+</div>
+
+<script>
+    function mainDriver() {
+        let array1 = [1, 2, 3, 4, 5, 6]; //array w/o duplicates should print: No duplicates found;
+        let array2 = [1, 2, 2, 3, 4, 3, 5, 6, 7, 6, 6, 5]; //array with duplicates, should be transformed to: [1,2,3,4,5,6,7]
+        let array3 = ["aleksandar", "ivan", "aleksandar", "ace", "aco"];
+        document.getElementById("driver-testcases").innerHTML +=
+            "<b>Тест случај: 1</b>" +
+            "<br>Почетна листа: " + array1 +
+            "<br>Резултат: " + removeDuplicates(array1) + "<br><br>";
+
+        document.getElementById("driver-testcases").innerHTML +=
+            "<b>Тест случај: 2</b>" +
+            "<br>Почетна листа: " + array2 +
+            "<br>Резултат: " + removeDuplicates(array2) + "<br><br>";
+
+        document.getElementById("driver-testcases").innerHTML +=
+            "<b>Тест случај: 3</b>" +
+            "<br>Почетна листа: " + array3 +
+            "<br>Резултат: " + removeDuplicates(array3) + "<br><br>";
+
+        /*
+            .
+            .
+            .
+            Moze da bide nadopolneto za proizvolen broj test slucai, edinstven uslov e elementite na listite
+            da se sporedlivi megju sebe.
+         */
+    }
+
+    function removeDuplicates(array) {
+        //splice(i,k) - na i-ta pozicija izbrisi k posledovatelni elementi;
+        let initalSize = array.length;
+        for (var i = 0; i < array.length; i++) {
+            for (var j = i + 1; j < array.length; j++) {
+                if (array[i] === array[j]) {
+                    array.splice(j, 1);
+                }
+            }
+        }
+
+        if (array.length < initalSize) {
+            //Imalo e duplikati i izbriseni se;
+            return array;
+        } else {
+            return "Не се пронајдени дупликати";
+        }
+
+    }
+</script>
+</body>
+</html>
