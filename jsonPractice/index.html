@@ -12,26 +12,88 @@
 
 <script>
     function jsonLoader() {
-        var employees = {
-            "employees" : [
-                {
-                    "firstname" : "Aleksandar",
-                    "lastname" : "Ivanovski",
-                    "age" : 19
-                },
-                {
-                    "firstname" : "Sanja",
-                    "lastname" : "Petrova",
-                    "age" : 19
-                }
-            ]
-        };
+       let companies = `[
+           {
+               "name" : "Big",
+               "numberOfEmployees" : 5000,
+               "ceo" : "Alex",
+               "rating" : 3.4
+           },
+           {
+               "name" : "Medium",
+               "numberOfEmployees" : 150,
+               "ceo" : "Sammy",
+               "rating" : 2
+           },
+           {
+               "name" : "Small",
+               "numberOfEmployees" : 4,
+               "ceo" : "",
+               "rating" : 2
+           },
+           {
+               "name" : "Big",
+               "numberOfEmployees" : 5000,
+               "ceo" : "Alex",
+               "rating" : 3.4
+           },
+           {
+               "name" : "Medium",
+               "numberOfEmployees" : 150,
+               "ceo" : "Sammy",
+               "rating" : 2
+           },
+           {
+               "name" : "Small",
+               "numberOfEmployees" : 4,
+               "ceo" : "",
+               "rating" : 2
+           },
+           {
+               "name" : "Big",
+               "numberOfEmployees" : 5000,
+               "ceo" : "Alex",
+               "rating" : 3.4
+           },
+           {
+               "name" : "Medium",
+               "numberOfEmployees" : 150,
+               "ceo" : "Sammy",
+               "rating" : 2
+           },
+           {
+               "name" : "Small",
+               "numberOfEmployees" : 4,
+               "ceo" : "",
+               "rating" : 2
+           },
+           {
+               "name" : "Big",
+               "numberOfEmployees" : 5000,
+               "ceo" : "Alex",
+               "rating" : 3.4
+           },
+           {
+               "name" : "Medium",
+               "numberOfEmployees" : 150,
+               "ceo" : "Sammy",
+               "rating" : 2
+           },
+           {
+               "name" : "Small",
+               "numberOfEmployees" : 4,
+               "ceo" : "",
+               "rating" : 2
+           }
+       ]`;
 
-        const employeesJSON = JSON.stringify(employees);
 
-        const obj = JSON.parse(employeesJSON);
+        let obj = JSON.parse(companies);
 
-        document.getElementById("mainContent").innerHTML = obj[1].firstname;
+
+        for(let i = 0 ; i < obj.length; i++){
+            document.getElementById("mainContent").innerHTML += "Company Name: " + obj[i].name + " Number of employees: " + obj[i].numberOfEmployees + " Ceo: " + obj[i].ceo + " Rating: " + obj[i].rating + "<br>";
+        }
 
     }
 </script>
