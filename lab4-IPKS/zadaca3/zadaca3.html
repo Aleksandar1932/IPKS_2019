@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб4 - Задача3</title>
+
+    <style>
+        .formContainer {
+            margin: auto;
+            width: 50%;
+        }
+
+        .form {
+            margin: auto;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="formContainer">
+    <center><h1>Промена на позадина</h1></center>
+    <div class="form">
+        <form>
+            <label>Type: <select name="source" id="source">
+                <option value="color">Color</option>
+                <option value="image">Image</option>
+            </select></label><br>
+
+            <label>Value:<input type="text" name="value" id="value"></label>
+        </form>
+        <br>
+        <button onclick="changeBackground()">Промени</button>
+    </div>
+</div>
+
+<script>
+    function changeBackground() {
+        let source = document.getElementById("source").value;
+        let value = document.getElementById("value").value;
+
+        if (source === "color") {
+            document.body.style.backgroundImage =
+                "";
+            document.body.style.backgroundColor = value;
+        } else {
+            document.body.style.backgroundImage =
+                "url('" +
+                value +
+                "')";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб4 - Задача2</title>
+</head>
+
+<style>
+    .generatedContent{
+        margin: auto;
+        width: 50%;
+    }
+    .formContainer {
+        margin: auto;
+        width: 50%;
+    }
+
+    .form {
+        margin: auto;
+        width: 50%;
+    }
+
+    .form label {
+
+    }
+
+    .form button {
+        margin: auto;
+        width: 100%;
+    }
+</style>
+<body>
+<div class="formContainer">
+    <div class="form">
+        <form>
+            <label>Items:<input type="text" name="items" id="items"></label><br>
+
+            <label>Type: <select name="itemType" id="itemType">
+                <option value="radio">Radio Button</option>
+                <option value="checkbox">Check Box</option>
+            </select></label>
+
+        </form>
+        <br>
+        <button onclick="generateItems()">Прикажи</button>
+    </div>
+</div>
+
+<div class="generatedContent" id="generatedContent">
+
+</div>
+
+<script>
+
+    function generateItems() {
+        let itemsInput = document.getElementById("items").value;
+        let itemType = document.getElementById("itemType").value;
+
+        let tokens = itemsInput.split(",")
+        document.getElementById("generatedContent").innerHTML = "";
+        for (let i = 0; i < tokens.length; i++) {
+            if (itemType === "radio") {
+                document.getElementById("generatedContent").innerHTML += `<input type="radio" name="" value="">` + tokens[i];
+            } else {
+                document.getElementById("generatedContent").innerHTML += `<input type="checkbox" name="" value="">` + tokens[i];
+            }
+        }
+    }
+</script>
+</body>
+</html>

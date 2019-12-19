@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаб4 - Задача1</title>
+</head>
+
+<style>
+    .formContainer{
+        margin: auto;
+        width: 50%;
+    }
+
+    .form{
+        margin: auto;
+        width: 50%;
+    }
+
+    .form label{
+
+    }
+    .form button{
+        margin: auto;
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 1px;
+    }
+    table {
+        border-spacing: 1px;
+    }
+
+    .tableContainer{
+        margin: auto;
+        width: 50%;
+    }
+</style>
+<body>
+
+<div class="formContainer">
+    <center><h1>Форма за внесување оцени</h1></center>
+
+    <div class="form">
+        <form>
+            <label>Име:<input type="text" name="firstName" id="firstName"></label><br>
+            <label>Презиме:<input type="text" name="lastName" id="lastName"></label><br>
+            <label>Индекс:<input type="number" name="index" id="index"></label><br>
+            <label>Предмет:<input type="text" name="course" id="course"></label><br>
+
+            <label>Oцена: <select name="grade" id="grade">
+                <option value="5">5 (пет)</option>
+                <option value="6">6 (шест)</option>
+                <option value="7">7 (седум)</option>
+                <option value="8">8 (осум)</option>
+                <option value="9">9 (девет)</option>
+                <option value="10">10 (десет)</option>
+            </select></label>
+
+        </form>
+        <br>
+        <button onclick="gradeImport()">Внеси</button>
+
+    </div>
+</div>
+<br>
+<div class="tableContainer">
+    <table style="width:100%" id="table">
+        <tr>
+            <th>Име</th>
+            <th>Презиме</th>
+            <th>Индекс</th>
+            <th>Предмет</th>
+            <th>Оцена</th>
+        </tr>
+
+    </table>
+</div>
+
+<script>
+
+    let gradesArray = new Array(); //niza na globalno nivo
+
+    function gradeImport() {
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById("lastName").value;
+        let index = document.getElementById("index").value;
+        let course = document.getElementById("course").value;
+        let grade = document.getElementById("grade").value;
+
+        let gradeToImport = new Grade(firstName,lastName,index,course,grade);
+
+        insertToTable(gradeToImport);
+
+        gradesArray.push(gradeToImport); //bidejki nizata e globalna celo vreme se cuvaat site inputi vo nea;
+        console.log(gradesArray);
+    }
+
+    function Grade(firstName, lastName, index, course, grade) {
+        //Object prototype for grade
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.index = index;
+        this.course = course;
+        this.grade = grade;
+
+    }
+
+
+    function insertToTable(arg) {
+        let table = document.getElementById("table");
+        let row = table.insertRow();
+
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+        let cell5 = row.insertCell(4);
+
+        cell1.innerHTML = arg.firstName; //ime
+        cell2.innerHTML = arg.lastName; //prezime
+        cell3.innerHTML = arg.index; //indeks
+        cell4.innerHTML = arg.course; // predmet
+        cell5.innerHTML = arg.grade; //ocenka
+
+    }
+
+</script>
+
+</body>
+</html>
