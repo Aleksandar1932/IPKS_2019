@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Лаб5 - Задача2</title>
+</head>
+<script>
+    let MAXIMUM_NUMBER = 9999;
+    let MINIMUM_NUMBER = 1000;
+    let RANDOM_NUMBER = generateRandomNumber();
+    let ATTEMPTS_COUNT = 0;
+    let MAX_ATTEMPTS = 10;
+
+
+    function generateRandomNumber() {
+        return Math.floor(Math.random() * (MAXIMUM_NUMBER - MINIMUM_NUMBER + 1)) + MINIMUM_NUMBER;
+    }
+
+    function resetRandomNumber() {
+        RANDOM_NUMBER = generateRandomNumber();
+    }
+
+</script>
+<body onload="generateRandomNumber()">
+<div class="gameContainer">
+    <div class="gameInput">
+        <form id="inputNumber">
+            <label>Погодок: <input type="number" name="userNumber"></label>
+        </form>
+        <button onclick="guessNumber()" id="guessButton">Погоди</button>
+        <button onclick="resetGame()">Од почеток</button>
+    </div>
+    <div class="gameResults" id="gameResults">
+
+    </div>
+</div>
+
+<script>
+    function guessNumber() {
+
+        let userNumber = parseInt($("input[name='userNumber']").val());
+        ATTEMPTS_COUNT++;
+
+        if (ATTEMPTS_COUNT < MAX_ATTEMPTS) {
+            processUserInput(userNumber, RANDOM_NUMBER);
+        } else {
+            addToResults("Не успеавте да погодите од 10 обиди. Бројот е: " + RANDOM_NUMBER);
+            $("#guessButton").attr("disabled", true);
+        }
+    }
+
+    function processUserInput(user, random) {
+
+        if (validNumber(user)) {
+            let numberOfMatchingDigits = matchingDigits(user, random);
+            if (numberOfMatchingDigits === 4) {
+                addToResults("ПОГОДОК " + " бројот е: " + user);
+                $("#guessButton").attr("disabled", true);
+            } else {
+                addToResults("Има " + numberOfMatchingDigits + " Внесен број: " + user);
+            }
+        } else {
+            addToResults("Не е внесен четири цифрен број!");
+        }
+    }
+
+    function addToResults(string) {
+        let gameResults = $("#gameResults");
+        gameResults.append("<p>" + string + "</p>");
+    }
+
+    function validNumber(number) {
+        return !(number > MAXIMUM_NUMBER || number < MINIMUM_NUMBER);
+    }
+
+    function matchingDigits(a, b) {
+        let arrayA = numberToArray(a);
+        let arrayB = numberToArray(b);
+        let equalDigits = 0;
+
+        for (let i = 0; i < arrayA.length; i++) {
+            if (arrayA[i] === arrayB[i]) {
+                equalDigits++;
+            }
+        }
+
+        return equalDigits;
+    }
+
+    function numberToArray(number) {
+        return ("" + number).split("");
+    }
+
+    function resetGame() {
+        $("#guessButton").attr("disabled", false);
+        let gameResults = $("#gameResults");
+        gameResults.html("");
+        ATTEMPTS_COUNT = 0;
+        resetRandomNumber();
+    }
+</script>
+</body>
+</html>

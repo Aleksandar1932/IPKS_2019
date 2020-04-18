@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Лаб5 - Задача1</title>
+</head>
+<style>
+    .calculatorContainer{
+        margin: auto;
+        width: 30%;
+    }
+</style>
+<body>
+<div class="calculatorContainer">
+    <div class="calculator">
+        <h1>Калкулатор</h1>
+        <form id="calculatorForm">
+            <label>a:<input type="number" name="a" id="a"></label>
+            <label>b:<input type="number" name="b"></label><br>
+
+            <!-- Operacii -->
+            <label><input type="radio" name="operation" value="+">a+b</label>
+            <label><input type="radio" name="operation" value="-">a-b</label>
+            <label><input type="radio" name="operation" value="*">a*b</label>
+            <label><input type="radio" name="operation" value="/">a/b</label>
+            <br>
+            <label><input type="radio" name="operation" value="sin">sin(a)</label>
+            <label><input type="radio" name="operation" value="cos">cos(a)</label>
+            <label><input type="radio" name="operation" value="tan">tg(a)</label>
+            <br>
+            <label><input type="radio" name="operation" value="ceil">[a]</label>
+            <label><input type="radio" name="operation" value="aExpB">a^b</label>
+            <label><input type="radio" name="operation" value="sqrt">sqrt(a)</label>
+        </form>
+        <button onclick="calculateResult()">Пресметај!</button>
+    </div>
+    <div class="calculatorResult" id="calculatorResult">
+
+    </div>
+</div>
+<script>
+    function calculateResult() {
+        let a = parseFloat($("input[name='a']").val());
+        let b = parseFloat($("input[name='b']").val());
+        let operation = $("input[name='operation']:checked").val();
+
+        let resultField = $("#calculatorResult");
+        switch (operation) {
+            case "+":
+                resultField.html(a + b);
+                break;
+            case "-":
+                resultField.html(a - b);
+                break;
+            case "*":
+                resultField.html(a * b);
+                break;
+            case "/":
+                resultField.html(a / b);
+                break;
+            case "sin":
+                resultField.html(Math.sin(a));
+                break;
+            case "cos":
+                resultField.html(Math.cos(a));
+                break;
+            case "tan":
+                resultField.html(Math.tan(a));
+                break;
+            case "ceil":
+                resultField.html(Math.ceil(a));
+                break;
+            case "aExpB":
+                resultField.html(Math.pow(a, b));
+                break;
+            case "sqrt":
+                resultField.html(Math.sqrt(a));
+                break;
+        }
+    }
+</script>
+</body>
+</html>

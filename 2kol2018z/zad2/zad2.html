@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+
+    <script src="../zad1/jquery-3.2.1.min.js"></script>
+
+    <style>
+        div {
+
+        }
+    </style>
+</head>
+<body>
+<form>
+    <label>Colors:<br>
+        <input type="text" name="colors" id="colors">
+    </label>
+    <br>
+    <label>Delimiter:<br>
+        <input type="text" name="delimiter" id="delimiter">
+    </label>
+</form>
+
+<div id="container">
+
+</div>
+
+<button onclick="draw()">Draw</button>
+</body>
+
+<script>
+    function draw() {
+        let colors = $("#colors").val();
+        let delimiter = $("#delimiter").val();
+
+        let colorsArray = colors.split(delimiter);
+
+        for (let i = 0; i < colorsArray.length; i++) {
+            drawRectangle(colorsArray[i]);
+        }
+
+        console.log(JSON.stringify(colorsArray));
+    }
+
+    function drawRectangle(color) {
+        $("#container").append('<div onclick="$(this).hide();" style="height: 100px;display: inline-flex; width: 100px; background-color:' + color + '"> </div>')
+    }
+</script>
+</html>

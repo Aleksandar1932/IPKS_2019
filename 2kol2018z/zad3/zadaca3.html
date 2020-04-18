@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruits table</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body onload="parseJSON()">
+<div class="tableContainer" id="tableContainer">
+    <table style="width:100%" id="table">
+        <tr>
+            <th>ime</th>
+            <th>kolichina</th>
+            <th>cena</th>
+            <th>kupi</th>
+        </tr>
+    </table>
+
+    <button onclick="buy()">BUY</button>
+</div>
+
+<div class="errorLog" id="errorLog">
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+
+    function parseJSON() {
+        $.getJSON("ovoshki.json", function (json) {
+            for (let i = 0; i < json.length; i++) {
+                let current = json[i];
+                insertToTable(current.name, current.quantity, current.price);
+            }
+        });
+
+    }
+
+    function insertToTable(ime, kolicina, cena, kupi) {
+        let table = document.getElementById("table");
+        let row = table.insertRow();
+
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+
+        cell1.innerHTML = ime;
+        cell2.innerHTML = kolicina;
+        cell3.innerHTML = cena;
+        cell4.innerHTML = "<td><input class='wantedQuantity' type='number'></td>";
+    }
+
+    function buy() {
+
+        let totalSum = 0;
+
+        let quantitiesBulk = $(".wantedQuantity");
+        let quantitesArr = [];
+        for (let i = 0; i < quantitiesBulk.length; i++) {
+            quantitesArr.push(quantitiesBulk[i].valueAsNumber);
+        }
+        //
+        //
+        // let tableRows = $("table tr");
+        //
+        // for(let i= 0;i<tableRows.length;i++){
+        //     let thisRow = tableRows[i];
+        //
+        //     console.log();
+        // }
+
+        let table = document.getElementById("table");
+        let rows = table.rows;
+
+        for (let i = 1; i < rows.length; i++) {
+            let flag = true;
+
+            let thisRow = rows[i];
+            let childNodes = thisRow.childNodes;
+
+            let item = thisRow.firstChild.innerHTML;
+            let itemQuantity = childNodes[1].innerHTML;
+            let itemPrice = childNodes[2].innerHTML;
+            let wantedQuantity = quantitesArr[i - 1];
+            console.log(item + " " + wantedQuantity + " " + itemQuantity + " " + itemPrice);
+
+            if (wantedQuantity > itemQuantity) {
+                $("#errorLog").append('<p>pogresna kolicina kaj ' + item + '</p>')
+                thisRow.bgColor = "red";
+                flag = false;
+            }
+            if (wantedQuantity < 0) {
+                $("#errorLog").append('<p>negativna vrednost kaj ' + item + '</p>')
+                thisRow.bgColor = "red";
+                flag = false;
+            }
+
+            if (flag) {
+                totalSum += parseInt(wantedQuantity) * parseInt(itemPrice);
+            }
+
+        }
+
+        $("#errorLog").append('<br><b><p>totalSUM = ' + totalSum + '</p></b>');
+    }
+
+</script>
+
+</body>
+</html>

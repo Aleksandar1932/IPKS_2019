@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+  <img src="s1.png"/>
+  <img src="s2.png"/>
+  <img src="s3.png"/>
+  <img src="s4.png"/>
+  <img src="s5.png"/>
+  <img src="s6.png"/>
+
+  <script src="jquery-3.2.1.min.js"></script>
+  <script>
+    imgs = $("img");
+    for(i=0;i<imgs.length;i++)
+    {
+      fall(imgs[i]);
+    }
+
+    function fall(elem)
+    {
+      const leftp = Math.random() * 1200;
+      $(elem).css({position: 'absolute', top:'-10px', left:leftp, width: '150px'});
+      const speedp = (Math.random() + 0.5) * 5000;
+      $(elem).animate({top:'950px'}, speedp, function() {fall(elem)})
+
+    }
+  </script>
+</body>
+</html>
